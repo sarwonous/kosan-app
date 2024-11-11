@@ -9,7 +9,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   ArrowUpRight,
@@ -32,7 +31,6 @@ import {
 import relativeTime from "dayjs/plugin/relativeTime";
 import Header from "@/components/app/header";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
 
 dayjs.extend(relativeTime);
 
@@ -49,6 +47,7 @@ export default function DashboardPage() {
     skip: !user.isSuccess || !user.user,
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { data: nextInvoice } = useGetNextInvoiceQuery(storage.get("token"), {
     skip: !user.isSuccess || !user.user,
   });
@@ -133,7 +132,7 @@ export default function DashboardPage() {
                 <div>
                   {nextInvoice.payments?.length > 0 ? (
                     <ul className="space-y-2">
-                      {nextInvoice.payments.map((payment: any) => (
+                      {Array.isArray(nextInvoice.payments) && nextInvoice.payments.map((payment: { id: string; paid_amount: number; date: string }) => (
                         <li
                           key={payment.id}
                           className="flex justify-between items-center"
@@ -233,38 +232,40 @@ export default function DashboardPage() {
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2 justify-end">
-                      {["overdue"].includes(invoice.status) && (
+                      {!["paid", "refunded", "cancelled"].includes(invoice.status) && (
+                        <>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="w-full sm:w-auto"
+                            onClick={() => setIsQRModalOpen(!isQRModalOpen)}
+                            title={`Pay Invoice #${invoice.id}`}
+                          >
+                            <CreditCardIcon className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            onClick={() =>
+                              navigate(`/upload-receipt?invoice_id=${invoice.id}`)
+                            }
+                            size="sm"
+                            className="w-full sm:w-auto"
+                            title={`Upload Receipt for Invoice #${invoice.id}`}
+                          >
+                            <UploadIcon className="h-4 w-4" />
+                          </Button>
+                        </>
+                      )}
+                      {invoice?.downloadable && (
                         <Button
                           variant="outline"
                           size="sm"
+                          onClick={() => handleDownloadInvoice(invoice.id)}
                           className="w-full sm:w-auto"
-                          onClick={() => setIsQRModalOpen(!isQRModalOpen)}
-                          title={`Pay Invoice #${invoice.id}`}
+                          title={`Download Invoice #${invoice.id}`}
                         >
-                          <CreditCardIcon className="h-4 w-4" />
+                          <DownloadIcon className="h-4 w-4" />
                         </Button>
                       )}
-                      {["overdue"].includes(invoice.status) && (
-                        <Button
-                          onClick={() =>
-                            navigate(`/upload-receipt?invoice_id=${invoice.id}`)
-                          }
-                          size="sm"
-                          className="w-full sm:w-auto"
-                          title={`Upload Receipt for Invoice #${invoice.id}`}
-                        >
-                          <UploadIcon className="h-4 w-4" />
-                        </Button>
-                      )}
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleDownloadInvoice(invoice.id)}
-                        className="w-full sm:w-auto"
-                        title={`Download Invoice #${invoice.id}`}
-                      >
-                        <DownloadIcon className="h-4 w-4" />
-                      </Button>
                     </div>
                   </TableCell>
                 </TableRow>

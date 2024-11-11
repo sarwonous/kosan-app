@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -24,6 +24,7 @@ export default function UploadReceiptPage() {
   const [file, setFile] = useState<File | null>(null);
   const [amount, setAmount] = useState<number>(0);
   const [paidDate, setPaidDate] = useState<Date>(new Date());
+  const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -137,18 +138,54 @@ export default function UploadReceiptPage() {
                   <span>Amount</span>
                   <Input
                     id="amount"
-                    type="number"
+                    type="text"
+                    pattern="[0-9]*"
                     value={amount}
-                    onChange={(e) => setAmount(Number(e.target.value))}
+                    onChange={(e) => {
+                        if (isNaN(Number(e.target.value))) {
+                          e.preventDefault();
+                          return;
+                        }
+                        setAmount(Number(e.target.value))
+                      }
+                    }
                     className="w-full"
                   />
                 </Label>
               </div>
+              {/**
+               * show image preview
+               */}
+              <div>
+                {file && ["image/jpeg","image/png","image/gif","image/bmp","image/webp"].includes(file.type) && (
+                  <div className="grid w-full items-center gap-1.5 relative">
+                    <div className="absolute right-1 top-1 w-12 h-12">
+                      <button
+                        onClick={() => {
+                          setFile(null);
+                          if (inputRef.current) {
+                            inputRef.current.value = '';
+                          }
+                        }}
+                        className="text-black text-xl rounded-full group w-10 h-10 flex justify-center items-center"
+                      >
+                        <span className='hover:scale-125'>&times;</span>
+                      </button> 
+                    </div>
+                    <img
+                      src={URL.createObjectURL(file)}
+                      alt="Receipt Preview"
+                      className="w-full h-48 object-cover rounded"
+                    />
+                  </div>
+                )}
+              </div>
               <div className="grid w-full items-center gap-1.5">
                 <Input
+                  ref={inputRef}
                   id="receipt"
                   type="file"
-                  accept="image/*,.pdf"
+                  accept="image/*"
                   onChange={handleFileChange}
                   className="w-full"
                 />

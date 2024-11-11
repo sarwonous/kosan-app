@@ -4,11 +4,12 @@ interface DefaultResponse {
     status: string;
     code: number;
     message: string;
-    data: InvoiceState | InvoiceState[] | unknown;
+    data: InvoiceState | InvoiceState[] | any;
 }
 
 interface InvoiceState {
     id: string;
+    payments: any[],
     [key: string]: any;
 }
 

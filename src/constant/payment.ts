@@ -1,0 +1,1 @@
+export const PAID_INVOICES = ["paid", "partially_paid"];
