@@ -18,6 +18,7 @@ interface UserState {
         updated_at?: string;
         deleted_at?: string;
         email_verified_at?: string;
+        [key: string]: any;
     },
     expires_at?: number;
 }

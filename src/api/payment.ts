@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 interface DefaultResponse {
     status: string;
     code: number;
-    message: string;
+    message: any;
     data: InvoiceState | InvoiceState[] | any;
 }
 
@@ -24,7 +24,7 @@ const paymentApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
     tagTypes: ["Payment"],
     endpoints: (builder) => ({
-        uploadReceipt: builder.mutation<InvoiceState,IUploadReceipt>({
+        uploadReceipt: builder.mutation<DefaultResponse,IUploadReceipt>({
             query: ({
                 body,
                 token
@@ -36,10 +36,7 @@ const paymentApi = createApi({
                 },
                 body,
             }),
-            invalidatesTags: ["Payment"],
-            transformResponse: (response: DefaultResponse): InvoiceState => {
-                return response.data as InvoiceState;
-            },
+            invalidatesTags: ["Payment"]
         }),
     }),
 });

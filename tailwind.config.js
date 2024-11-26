@@ -8,6 +8,9 @@ export default {
     './src/**/*.{ts,tsx}',
   ],
   theme: {
+    fontFamily: {
+      sans: ["Noto Sans", "sans-serif"],
+    },
     extend: {
       borderRadius: {
         lg: 'var(--radius)',

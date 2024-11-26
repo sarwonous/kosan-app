@@ -26,7 +26,7 @@ const Header = ({
             <h1 className="text-2xl font-bold sm:text-3xl">
                 {title}
             </h1>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 flex-wrap">
                 {children}
                 {auth.user.isSuccess && (
                     <Button variant="outline" onClick={() => logout()}>
