@@ -6,6 +6,7 @@ export async function middleware(request: NextRequest) {
     request: {
       headers: request.headers,
     },
+    // user: null, // Removed unsupported property
   })
 
   const supabase = createServerClient(
@@ -54,7 +55,7 @@ export async function middleware(request: NextRequest) {
       )
     }
   }
-
+  // pass the user information to the response
   return response
 }
 
