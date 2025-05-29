@@ -1,5 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
+import { Toaster } from "react-hot-toast";
 
 const Sidebar = () => {
   return (
@@ -8,22 +9,34 @@ const Sidebar = () => {
       <nav>
         <ul className="space-y-2">
           <li>
-            <Link href="/dashboard" className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors">
+            <Link
+              href="/dashboard"
+              className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+            >
               Dashboard
             </Link>
           </li>
           <li>
-            <Link href="/accounts" className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors">
+            <Link
+              href="/accounts"
+              className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+            >
               Accounts
             </Link>
           </li>
           <li>
-            <Link href="/transactions" className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors">
+            <Link
+              href="/transactions"
+              className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+            >
               Transactions
             </Link>
           </li>
           <li>
-            <Link href="/reports" className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors">
+            <Link
+              href="/reports"
+              className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+            >
               Reports
             </Link>
           </li>
@@ -43,9 +56,8 @@ const AuthenticatedLayout = ({
   return (
     <div className="flex">
       <Sidebar />
-      <main className="flex-1 bg-gray-100 min-h-screen">
-        {children}
-      </main>
+      <main className="flex-1 bg-gray-100 min-h-screen">{children}</main>
+      <Toaster position="bottom-center" />
     </div>
   );
 };
