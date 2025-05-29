@@ -124,75 +124,75 @@ const DashboardPage = () => {
   return (
     <div className="p-4 md:p-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
-        <div className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-[#4ED7F1]">
-          <h3 className="text-gray-500 text-sm font-medium">
+        <div className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-[#1a237e]">
+          <h3 className="text-gray-600 text-sm font-medium">
             Total Subscriptions
           </h3>
-          <p className="text-2xl font-bold text-[#4ED7F1]">{subscriptions.length}</p>
+          <p className="text-2xl font-bold text-[#1a237e]">{subscriptions.length}</p>
         </div>
-        <div className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-[#6FE6FC]">
-          <h3 className="text-gray-500 text-sm font-medium">
+        <div className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-[#283593]">
+          <h3 className="text-gray-600 text-sm font-medium">
             Active Subscriptions
           </h3>
-          <p className="text-2xl font-bold text-[#6FE6FC]">
+          <p className="text-2xl font-bold text-[#283593]">
             {subscriptions.filter((sub) => sub.status === "active").length}
           </p>
         </div>
-        <div className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-[#FFFA8D]">
-          <h3 className="text-[#4ED7F1] text-sm font-medium">
+        <div className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-[#3949ab]">
+          <h3 className="text-gray-600 text-sm font-medium">
             Outstanding Payments
           </h3>
-          <p className="text-2xl font-bold text-[#FFFA8D]">
+          <p className="text-2xl font-bold text-[#3949ab]">
             ${totalOutstanding.toFixed(2)}
           </p>
         </div>
       </div>
 
       <div className="bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
-        <div className="p-6 border-b border-gray-200 bg-[#4ED7F1] bg-opacity-10">
-          <h2 className="text-xl font-semibold text-[#4ED7F1]">Outstanding Invoices</h2>
+        <div className="p-6 border-b border-gray-200 bg-[#1a237e] bg-opacity-5">
+          <h2 className="text-xl font-semibold text-[#1a237e]">Outstanding Invoices</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-[#A8F1FF] bg-opacity-20">
+            <thead className="bg-[#1a237e] bg-opacity-5">
               <tr>
-                <th className="px-4 py-3 text-left text-xs font-medium text-[#4ED7F1] uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-[#1a237e] uppercase tracking-wider">
                   Subscription Name
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-[#4ED7F1] uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-[#1a237e] uppercase tracking-wider">
                   Amount
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-[#4ED7F1] uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-[#1a237e] uppercase tracking-wider">
                   Due Date
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-[#4ED7F1] uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-[#1a237e] uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-[#4ED7F1] uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-[#1a237e] uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#A8F1FF] divide-opacity-20">
+            <tbody className="divide-y divide-gray-200">
               {invoices.map((invoice) => (
-                <tr key={invoice.id} className="hover:bg-[#A8F1FF] hover:bg-opacity-5">
+                <tr key={invoice.id} className="hover:bg-[#1a237e] hover:bg-opacity-5">
                   <td className="px-4 py-4 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900">
                       {invoice.subscription.name}
                     </div>
                   </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-600">
                     ${invoice.amount.toFixed(2)}
                   </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-600">
                     {new Date(invoice.due_date).toLocaleDateString()}
                   </td>
                   <td className="px-4 py-4 whitespace-nowrap">
                     <span
                       className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                         invoice.status === "unpaid"
-                          ? "bg-[#FFFA8D] bg-opacity-20 text-[#4ED7F1]"
-                          : "bg-[#6FE6FC] bg-opacity-20 text-[#4ED7F1]"
+                          ? "bg-red-100 text-red-800"
+                          : "bg-green-100 text-green-800"
                       }`}
                     >
                       {invoice.status}
@@ -204,7 +204,7 @@ const DashboardPage = () => {
                         href={`/invoices/${invoice.id}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#4ED7F1] hover:text-[#6FE6FC]"
+                        className="text-[#3949ab] hover:text-[#1a237e]"
                         title="View Invoice"
                       >
                         View Invoice
@@ -212,7 +212,7 @@ const DashboardPage = () => {
                       {invoice.status === "unpaid" && (
                         <Link
                           href={`/invoices/${invoice.id}/pay`}
-                          className="text-[#4ED7F1] hover:text-[#6FE6FC]"
+                          className="text-[#3949ab] hover:text-[#1a237e]"
                           title="Pay Invoice"
                         >
                           Pay Now
@@ -248,30 +248,30 @@ const DashboardPage = () => {
       </div>
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="p-6 border-b border-gray-200 bg-[#4ED7F1] bg-opacity-10">
-          <h2 className="text-xl font-semibold text-[#4ED7F1]">Subscriptions</h2>
+        <div className="p-6 border-b border-gray-200 bg-[#1a237e] bg-opacity-5">
+          <h2 className="text-xl font-semibold text-[#1a237e]">Subscriptions</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-[#A8F1FF] bg-opacity-20">
+            <thead className="bg-[#1a237e] bg-opacity-5">
               <tr>
-                <th className="px-4 py-3 text-left text-xs font-medium text-[#4ED7F1] uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-[#1a237e] uppercase tracking-wider">
                   Name
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-[#4ED7F1] uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-[#1a237e] uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-[#4ED7F1] uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-[#1a237e] uppercase tracking-wider">
                   Amount
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-[#4ED7F1] uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-[#1a237e] uppercase tracking-wider">
                   Start Date
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#A8F1FF] divide-opacity-20">
+            <tbody className="divide-y divide-gray-200">
               {subscriptions.map((subscription) => (
-                <tr key={subscription.id} className="hover:bg-[#A8F1FF] hover:bg-opacity-5">
+                <tr key={subscription.id} className="hover:bg-[#1a237e] hover:bg-opacity-5">
                   <td className="px-4 py-4 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900">
                       {subscription.name}
@@ -281,19 +281,19 @@ const DashboardPage = () => {
                     <span
                       className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                         subscription.status === "active"
-                          ? "bg-[#6FE6FC] bg-opacity-20 text-[#4ED7F1]"
+                          ? "bg-green-100 text-green-800"
                           : subscription.status === "unpaid"
-                          ? "bg-[#FFFA8D] bg-opacity-20 text-[#4ED7F1]"
+                          ? "bg-red-100 text-red-800"
                           : "bg-gray-100 text-gray-800"
                       }`}
                     >
                       {subscription.status}
                     </span>
                   </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-600">
                     ${subscription.price.toFixed(2)}
                   </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-600">
                     {new Date(subscription.start_date).toLocaleDateString()}
                   </td>
                 </tr>

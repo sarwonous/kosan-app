@@ -41,12 +41,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#4ED7F1] to-[#A8F1FF] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#1a237e] to-[#283593] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-xl p-8">
           <div className="mb-8 text-center">
-            <h1 className="text-3xl font-bold text-[#4ED7F1] mb-2">Welcome Back</h1>
-            <p className="text-gray-500">Please sign in to your account</p>
+            <h1 className="text-3xl font-bold text-[#1a237e] mb-2">Welcome Back</h1>
+            <p className="text-gray-600">Please sign in to your account</p>
           </div>
           
           <form onSubmit={handleLogin} className="space-y-6">
@@ -59,7 +59,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6FE6FC] focus:border-transparent transition duration-200"
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3949ab] focus:border-transparent transition duration-200"
                 placeholder="Enter your email"
               />
             </div>
@@ -73,7 +73,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6FE6FC] focus:border-transparent transition duration-200"
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3949ab] focus:border-transparent transition duration-200"
                 placeholder="Enter your password"
               />
             </div>
@@ -87,7 +87,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full bg-[#4ED7F1] text-white py-3 rounded-lg font-medium hover:bg-[#6FE6FC] transition duration-200 ${
+              className={`w-full bg-[#1a237e] text-white py-3 rounded-lg font-medium hover:bg-[#283593] transition duration-200 ${
                 isLoading ? 'opacity-70 cursor-not-allowed' : ''
               }`}
             >
@@ -96,7 +96,7 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-6 text-center">
-            <a href="#" className="text-sm text-[#4ED7F1] hover:text-[#6FE6FC]">
+            <a href="#" className="text-sm text-[#3949ab] hover:text-[#1a237e]">
               Forgot your password?
             </a>
           </div>
