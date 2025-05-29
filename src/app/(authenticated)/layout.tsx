@@ -4,14 +4,14 @@ import { Toaster } from "react-hot-toast";
 
 const Sidebar = () => {
   return (
-    <div className="bg-gray-800 text-white w-64 min-h-screen p-4">
-      <div className="text-2xl font-bold mb-8 text-center">Finance Tracker</div>
-      <nav>
-        <ul className="space-y-2">
+    <div className="bg-[#4ED7F1] text-white w-full md:w-64 min-h-[60px] md:min-h-screen p-4">
+      <div className="text-2xl font-bold mb-2 md:mb-8 text-center">Finance Tracker</div>
+      <nav className="flex md:block overflow-x-auto whitespace-nowrap md:whitespace-normal">
+        <ul className="flex md:flex-col space-x-4 md:space-x-0 md:space-y-2">
           <li>
             <Link
               href="/dashboard"
-              className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+              className="block py-2 px-4 rounded hover:bg-[#6FE6FC] transition-colors"
             >
               Dashboard
             </Link>
@@ -19,7 +19,7 @@ const Sidebar = () => {
           <li>
             <Link
               href="/accounts"
-              className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+              className="block py-2 px-4 rounded hover:bg-[#6FE6FC] transition-colors"
             >
               Accounts
             </Link>
@@ -27,7 +27,7 @@ const Sidebar = () => {
           <li>
             <Link
               href="/transactions"
-              className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+              className="block py-2 px-4 rounded hover:bg-[#6FE6FC] transition-colors"
             >
               Transactions
             </Link>
@@ -35,7 +35,7 @@ const Sidebar = () => {
           <li>
             <Link
               href="/reports"
-              className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+              className="block py-2 px-4 rounded hover:bg-[#6FE6FC] transition-colors"
             >
               Reports
             </Link>
@@ -54,9 +54,9 @@ const AuthenticatedLayout = ({
   params: { userId: string };
 }) => {
   return (
-    <div className="flex">
+    <div className="flex flex-col md:flex-row min-h-screen">
       <Sidebar />
-      <main className="flex-1 bg-gray-100 min-h-screen">{children}</main>
+      <main className="flex-1 bg-[#A8F1FF] bg-opacity-10 min-h-screen">{children}</main>
       <Toaster position="bottom-center" />
     </div>
   );
