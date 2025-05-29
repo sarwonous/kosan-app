@@ -11,7 +11,7 @@ interface Subscription {
 }
 
 const DashboardPage = () => {
-  useAuth();
+  // useAuth();
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
   const [totalOutstanding, setTotalOutstanding] = useState(0);
 
