@@ -31,7 +31,7 @@ export default function LoginPage() {
         localStorage.setItem("token", result.user.access_token);
         localStorage.setItem("refreshToken", result.user.refresh_token);
         localStorage.setItem("expiresAt", result.user.expires_at);
-        router.push("/dashboard");
+        router.push("/profile");
       }
     } catch (err) {
       setError("An unexpected error occurred.");
@@ -41,49 +41,61 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1a237e] to-[#283593] flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <div className="mb-8 text-center">
-            <h1 className="text-3xl font-bold text-[#1a237e] mb-2">Welcome Back</h1>
-            <p className="text-gray-600">Please sign in to your account</p>
-          </div>
-          
-          <form onSubmit={handleLogin} className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address
-              </label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3949ab] focus:border-transparent transition duration-200"
-                placeholder="Enter your email"
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Password
-              </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3949ab] focus:border-transparent transition duration-200"
-                placeholder="Enter your password"
-              />
+    <>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
+        <div className="w-full max-w-md">
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="mb-8 text-center">
+              <h1 className="text-3xl font-bold text-[var(--primary)] mb-2">
+                Welcome Back
+              </h1>
+              <p className="text-gray-600">Please sign in to your account</p>
             </div>
 
-            {error && (
-              <div className="bg-red-50 text-red-500 text-sm rounded-lg p-4">
-                {error}
+            <form onSubmit={handleLogin} className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3949ab] focus:border-transparent transition duration-200"
+                  placeholder="Enter your email"
+                />
               </div>
-            )}
 
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#3949ab] focus:border-transparent transition duration-200"
+                  placeholder="Enter your password"
+                />
+              </div>
+
+              {error && (
+                <div className="bg-red-50 text-red-500 text-sm rounded-lg p-4">
+                  {error}
+                </div>
+              )}
+              <button
+                type="submit"
+                disabled={isLoading}
+                className={`btn btn-primary w-full ${
+                  isLoading ? "opacity-70 cursor-not-allowed" : ""
+                }`}
+              >
+                {isLoading ? "Signing in..." : "Sign In"}
+              </button>
+              {/*}
             <button
               type="submit"
               disabled={isLoading}
@@ -93,15 +105,20 @@ export default function LoginPage() {
             >
               {isLoading ? 'Signing in...' : 'Sign In'}
             </button>
-          </form>
+            */}
+            </form>
 
-          <div className="mt-6 text-center">
-            <a href="#" className="text-sm text-[#3949ab] hover:text-[#1a237e]">
-              Forgot your password?
-            </a>
+            <div className="mt-6 text-center">
+              <a
+                href="#"
+                className="text-sm text-[var(--primary)] transition duration-200"
+              >
+                Forgot your password?
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

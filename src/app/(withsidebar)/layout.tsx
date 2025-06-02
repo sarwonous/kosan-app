@@ -4,14 +4,14 @@ import { Toaster } from "react-hot-toast";
 
 const Sidebar = () => {
   return (
-    <div className="bg-[#1a237e] text-white w-full md:w-64 min-h-[60px] md:min-h-screen p-4">
+    <div className="bg-[var(--primary)] text-white w-full md:w-64 min-h-[60px] md:min-h-screen p-4">
       <div className="text-2xl font-bold mb-2 md:mb-8 text-center">Finance Tracker</div>
       <nav className="flex md:block overflow-x-auto whitespace-nowrap md:whitespace-normal">
         <ul className="flex md:flex-col space-x-4 md:space-x-0 md:space-y-2">
           <li>
             <Link
               href="/dashboard"
-              className="block py-2 px-4 rounded hover:bg-[#283593] transition-colors"
+              className="block py-2 px-4 rounded hover:bg-[var(--secondary)] hover:text-[var(--primary)] transition-colors"
             >
               Dashboard
             </Link>
@@ -19,7 +19,7 @@ const Sidebar = () => {
           <li>
             <Link
               href="/accounts"
-              className="block py-2 px-4 rounded hover:bg-[#283593] transition-colors"
+              className="block py-2 px-4 rounded hover:bg-[var(--secondary)] hover:text-[var(--primary)] transition-colors"
             >
               Accounts
             </Link>
@@ -27,7 +27,7 @@ const Sidebar = () => {
           <li>
             <Link
               href="/transactions"
-              className="block py-2 px-4 rounded hover:bg-[#283593] transition-colors"
+              className="block py-2 px-4 rounded hover:bg-[var(--secondary)] hover:text-[var(--primary)] transition-colors"
             >
               Transactions
             </Link>
@@ -35,7 +35,7 @@ const Sidebar = () => {
           <li>
             <Link
               href="/reports"
-              className="block py-2 px-4 rounded hover:bg-[#283593] transition-colors"
+              className="block py-2 px-4 rounded hover:bg-[var(--secondary)] hover:text-[var(--primary)] transition-colors"
             >
               Reports
             </Link>

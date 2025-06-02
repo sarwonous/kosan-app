@@ -7,13 +7,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
     "@supabase/ssr": "^0.0.10",
     "@supabase/supabase-js": "^2.39.0",
     "@tailwindcss/postcss": "^4.1.8",
+    "currency.js": "^2.0.4",
+    "dayjs": "^1.11.13",
     "next": "^15.3.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-hot-toast": "^2.5.2"
+    "react-hot-toast": "^2.5.2",
+    "react-loading-skeleton": "^3.5.0",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@types/node": "22.15.24",

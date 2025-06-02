@@ -1,1 +1,136 @@
-@import "tailwindcss"
+@import "tailwindcss";
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
+
+@theme {
+  --primary: #46a080;
+  --secondary: #e6f4ef;
+  --primary-text: #ffffff;
+  --secondary-text: #20644f;
+  --primary-border: #46a080;
+  --secondary-border: #cde9df;
+}
+
+@layer components {
+
+  .link {
+    @apply text-gray-500 cursor-pointer;
+    &:hover {
+      @apply text-gray-700;
+    }
+    &:focus {
+      @apply text-gray-900;
+    }
+    &:active {
+      @apply text-gray-800;
+    }
+    &:visited {
+      @apply text-purple-600;
+    }
+    &:disabled {
+      @apply text-gray-400 cursor-not-allowed;
+    }
+    &:focus-visible {
+      @apply outline-none ring-2 ring-blue-500;
+    }
+    &:focus-within {
+      @apply outline-none ring-2 ring-blue-500;
+    }
+    &:focus-within:hover {
+      @apply text-gray-700;
+    }
+    &:focus-within:active {
+      @apply text-gray-800;
+    }
+    &:focus-within:visited {
+      @apply text-purple-600;
+    }
+    &:focus-within:disabled {
+      @apply text-gray-400 cursor-not-allowed;
+    }
+    &:focus-within:focus-visible {
+      @apply outline-none ring-2 ring-blue-500;
+    }
+    &:focus-within:focus {
+      @apply outline-none ring-2 ring-blue-500;
+    }
+    &:focus-within:focus:hover {
+      @apply text-gray-700;
+    }
+    &:focus-within:focus:active {
+      @apply text-gray-800;
+    }
+    &:focus-within:focus:visited {
+      @apply text-purple-600;
+    }
+    &:focus-within:focus:disabled {
+      @apply text-gray-400 cursor-not-allowed;
+    }
+    &:focus-within:focus-visible {
+      @apply outline-none ring-2 ring-blue-500;
+    }
+  }
+
+  .button {
+    @apply ring-1 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 text-sm font-bold leading-normal tracking-[0.015em];
+  }
+
+  .button-primary {
+    @apply bg-[var(--primary)] ring-[var(--primary)]/20 text-[var(--primary-text)] border border-[var(--primary-border)];
+    &:hover {
+      @apply bg-[var(--primary)]/90;
+    }
+  }
+
+  .button-secondary {
+    @apply bg-[var(--secondary)] ring-[var(--secondary-border)]/20 text-[var(--secondary-text)] border border-[var(--secondary-border)];
+    &:hover {
+      @apply bg-[var(--secondary)]/30 ring-[var(--secondary-border)]/10;
+    }
+  }
+
+
+  .btn {
+    @apply 
+      inline-flex 
+      items-center
+      justify-center
+      gap-2
+      whitespace-nowrap
+      rounded-md
+      text-sm
+      font-medium
+      transition-colors
+      disabled:pointer-events-none
+      disabled:opacity-50
+      shadow
+      h-9
+      px-4
+      py-2
+      cursor-pointer
+      ring-1
+      ring-inset
+      ring-gray-50
+      focus:ring-inset
+  }
+
+  .btn-primary {
+    @apply 
+      bg-[var(--primary)]
+      text-[var(--primary-text)]
+      text-white;
+      /* hover:bg-black/90 */
+      /* ring-black */
+      /* hover:ring-black */
+  }
+  .btn-secondary {
+    @apply 
+      /* text-gray-950 */
+      /* bg-gray-50 */
+      /* ring-gray-950 */
+      /* hover:bg-gray-200 */
+      bg-[var(--secondary)]
+      text-[var(--secondary-text)];
+  }
+}
